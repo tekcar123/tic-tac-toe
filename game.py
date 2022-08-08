@@ -8,7 +8,7 @@ def print_game(game):
 
 
 def play(player):
-    command = input("Where do you want to play? ")
+    command = input(f"{player}'s turn where do you want to play? ")
     if player == "X":
         if command == "top-left":
             game[0] = "X"
