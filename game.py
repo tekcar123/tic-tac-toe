@@ -32,8 +32,27 @@ def play(player):
         play(player)
 
 
-while game_finished == False:
+def does_player_win(game, player):
+    win = [(1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 5, 9),
+           (3, 5, 7), (1, 4, 7), (2, 5, 8), (3, 6, 9)]
+    for i in range(8):
+        count_symbol = 0
+        for x in range(3):
+            if game[win[i-1][x-1]-1] == player:
+                count_symbol += 1
+                if count_symbol == 3:
+                    return True
+    return False
+
+
+while True:
     play("X")
     print_game(game)
+    if does_player_win(game, "X"):
+        print("X won!")
+        exit()
     play("O")
     print_game(game)
+    if does_player_win(game, "O"):
+        print("O won!")
+        exit()
