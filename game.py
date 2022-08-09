@@ -28,7 +28,7 @@ def play(player):
     elif command == "bottom-right":
         game[8] = player
     else:
-        print("Command not valid. Try again")
+        print("Command invalid. Try again")
         play(player)
 
 
