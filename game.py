@@ -45,6 +45,13 @@ def does_player_win(game, player):
     return False
 
 
+def space_taken(game, position):
+    if game[position] == "X" or game[position] == "O":
+        return True
+    else:
+        return False
+
+
 while True:
     play("X")
     print_game(game)
