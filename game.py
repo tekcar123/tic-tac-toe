@@ -14,7 +14,17 @@ def play(player):
     for i in range(9):
         if command == text[i]:
             command = numbers[i]
-    game[int(command) - 1] = player
+    valid_command = "123456789"
+    if str(command) not in valid_command:
+        print("invalid command. Try again.")
+        play(player)
+        return 0
+    if not space_taken(game, int(command) - 1):
+        game[int(command) - 1] = player
+    else:
+        print("space taken. Try again.")
+        play(player)
+        return 0
 
 
 def does_player_win(game, player):
@@ -37,7 +47,18 @@ def space_taken(game, position):
         return False
 
 
+def is_tie(game):
+    numbers = "123456789"
+    for i in game:
+        if str(i) in numbers:
+            return False
+    return True
+
+
 while True:
+    if is_tie(game) == True:
+        print("Tie.")
+        exit()
     play("X")
     print_game(game)
     if does_player_win(game, "X"):
